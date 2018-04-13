@@ -1,4 +1,29 @@
 describe('Settings bill widget', function(){
+
+   describe('Checks if the totals are correct', function(){
+      it('if the user make 2 calls and 2 sms(s)', function(){
+         var referenced1 = settings();
+
+         referenced1.calculated('call');
+         referenced1.calculated('call');
+         referenced1.calculated('sms');
+         referenced1.calculated('sms');
+         assert.equal(referenced1.getTotals(),(referenced1.getSms() + referenced1.getCall()).toFixed(2));
+      });
+
+      it('if the user make 4 calls and 4 sms(s)', function(){
+         var referenced2 = settings();
+         referenced2.calculated('call');
+         referenced2.calculated('call');
+         referenced2.calculated('sms');
+         referenced2.calculated('sms');
+         referenced2.calculated('call');
+         referenced2.calculated('call');
+         referenced2.calculated('sms');
+         referenced2.calculated('sms');
+         assert.equal(referenced2.getTotals(),(referenced2.getSms() + referenced2.getCall()).toFixed(2));
+      });
+      
    describe('Checks if the values are updated', function(){
       it('check the call if it does update',function(){
          var referenced3 = settings();
@@ -57,27 +82,9 @@ describe('Settings bill widget', function(){
          assert.equal(referenced6.getTotals(),19.8)
       });
    });
-   it('if the user make 2 calls and 2 sms(s)', function(){
-      var referenced1 = settings();
 
-      referenced1.calculated('call');
-      referenced1.calculated('call');
-      referenced1.calculated('sms');
-      referenced1.calculated('sms');
-      assert.equal(referenced1.getTotals(),(referenced1.getSms() + referenced1.getCall()).toFixed(2));
-   });
 
-   it('if the user make 4 calls and 4 sms(s)', function(){
-      var referenced2 = settings();
-      referenced2.calculated('call');
-      referenced2.calculated('call');
-      referenced2.calculated('sms');
-      referenced2.calculated('sms');
-      referenced2.calculated('call');
-      referenced2.calculated('call');
-      referenced2.calculated('sms');
-      referenced2.calculated('sms');
-      assert.equal(referenced2.getTotals(),(referenced2.getSms() + referenced2.getCall()).toFixed(2));
+
    });
 
 });
