@@ -29,14 +29,11 @@ var sms = 0.00;
 var total = 0.00;
 //add an event listener for when the 'Update settings' button is pressed
 updateSettings.addEventListener('click', function(){
-
    callCost = parseFloat(callCostSetting.value);
    smsCost = parseFloat(smsCostSetting.value);
    warning = parseFloat(warningLevelSetting.value);
    critical = parseFloat(criticalLevelSetting.value);
-
    color();
-
 });
 //add an event listener for when the add button is pressed
 settingBtnAdd.addEventListener('click', function(){
@@ -79,19 +76,16 @@ function settings(){
       else if (billItemSettings === 'sms'){
          sms = sms + smsCost;
       }
-      
       total = (call + sms).toFixed(2) ;
-      
       if(total > critical){
          if(billItemSettings === 'call'){
             total -= callCost;
             call -= callCost;
-            
+
          }
          else if (billItemSettings === 'sms'){
             total -= smsCost;
             sms -= smsCost;
-            
          }
       }
       else{
@@ -99,7 +93,5 @@ function settings(){
          smsTotalSettings.textContent = sms.toFixed(2) ;
          totalSettings.textContent = total;
       }
-
    }
-
 }
