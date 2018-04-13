@@ -14,10 +14,6 @@ var settingBtnAdd = document.querySelector('.settingBtnAdd');
 //get a reference to the 'Update settings' button
 var updateSettings = document.querySelector('.updateSettings');
 // create a variables that will keep track of all the settings
-callCostSetting.value = 2.55;
-smsCostSetting.value = 0.65;
-warningLevelSetting.value = 30.00;
-criticalLevelSetting.value = 65.00;
 
 var callCost = 2.55 ;
 var smsCost = 0.65;
@@ -70,9 +66,9 @@ function settings_Dom(){
 }
 
 function settings(){
-   var call = 0.00;
-   var sms = 0.00;
-   var total = 0.00;
+   var call = 0;
+   var sms = 0;
+   var total = 0;
 
    function settings_Bill(value){
       if(total > critical){
@@ -85,7 +81,7 @@ function settings(){
          else if (value === 'sms'){
             sms = sms + smsCost;
          }
-         total = (call + sms).toFixed(2) ;
+         total = (call + sms).toFixed(2);
          if(total > critical){
             if(value === 'call'){
                total -= callCost;

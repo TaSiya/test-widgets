@@ -20,7 +20,6 @@ var factRef = factory();
 function text_Dom(){
 
    var flo =(billTypeText.value);
-   console.log(flo);
    factRef.calculations(flo);
    var answer = factRef.getter();
 
@@ -41,11 +40,9 @@ function factory(){
    function text_bill(bill){
       if(bill === 'sms'){
          sms1 = sms1 + 0.75 ;
-         console.log(sms1);
       }
       else if(bill=== 'call'){
          call1 = call1 + 2.75
-         console.log(call1);
       }
       total1 = sms1 + call1;
    }
