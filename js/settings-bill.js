@@ -14,14 +14,11 @@ var settingBtnAdd = document.querySelector('.settingBtnAdd');
 //get a reference to the 'Update settings' button
 var updateSettings = document.querySelector('.updateSettings');
 // create a variables that will keep track of all the settings
-
-var callCost = 2.55 ;
-var smsCost = 0.65;
-var warning = 30.00;
-var critical = 65.00;
+var referenceSettings = settings();
 //add an event listener for when the 'Update settings' button is pressed
 updateSettings.addEventListener('click', function(){
-   callCost = parseFloat(callCostSetting.value);
+   callCostTemp = parseFloat(callCostSetting.value);
+   referenceSettings.setCritical(callCostTemp);
    smsCost = parseFloat(smsCostSetting.value);
    warning = parseFloat(warningLevelSetting.value);
    critical = parseFloat(criticalLevelSetting.value);
@@ -38,7 +35,7 @@ settingBtnAdd.addEventListener('click', function(){
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen.
 // * check the value thresholds and display the total value in the right color.
-var referenceSettings = settings();
+
 function color(){
    if(referenceSettings.getTotals() <= warning){
       totalSettings.classList.remove('warning');
@@ -70,6 +67,11 @@ function settings(){
    var sms = 0;
    var total = 0;
 
+   var callCost = 2.55 ;
+   var smsCost = 0.65;
+   var warning = 30.00;
+   var critical = 65.00;
+
    function settings_Bill(value){
       if(total > critical){
 
@@ -96,23 +98,27 @@ function settings(){
       }
    }
 
-   function getTotal(){
-      return total;
-   }
+   function getTotal(){return total;}
+   function getCalls(){return call;}
+   function getSmses(){return sms;}
+   function getCallCost(){return callCost;}
+   function getSmsCost(){return smsCost;}
+   function getWarning(){return warning;}
+   function getCritical(){return critical;}
 
-   function getCalls(){
-      return call;
-   }
-
-   function getSmses(){
-      return sms;
+   function setCritical(value){
+      critical = value;
    }
 
    return {
       calculated : settings_Bill,
       getTotals : getTotal,
       getCall : getCalls,
-      getSms : getSmses
+      getSms : getSmses,
+      getCallCost : getCallCost,
+      getSmsCost : getSmsCost,
+      getWarningLevel : getWarning,
+      getCriticalLevel : getCritical
 
    }
 }
