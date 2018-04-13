@@ -23,7 +23,9 @@ describe('Settings bill widget', function(){
          referenced2.calculated('sms');
          assert.equal(referenced2.getTotals(),(referenced2.getSms() + referenced2.getCall()).toFixed(2));
       });
-      
+
+   });
+
    describe('Checks if the values are updated', function(){
       it('check the call if it does update',function(){
          var referenced3 = settings();
@@ -85,6 +87,6 @@ describe('Settings bill widget', function(){
 
 
 
-   });
+
 
 });
