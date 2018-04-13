@@ -118,7 +118,8 @@ function settings(){
       getCallCost : getCallCost,
       getSmsCost : getSmsCost,
       getWarningLevel : getWarning,
-      getCriticalLevel : getCritical
+      getCriticalLevel : getCritical,
+      setCrit : setCritical
 
    }
 }

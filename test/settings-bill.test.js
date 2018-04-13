@@ -39,7 +39,42 @@ describe('Settings bill widget', function(){
 
    it('Check if it prevent further calls or sms(s) if reached critical point', function(){
       var referenced5 = settings();
+      referenced5.setCrit(20);
+      referenced5.calculated('call');
+      referenced5.calculated('call');
+      referenced5.calculated('call');
+      referenced5.calculated('call');
+      referenced5.calculated('call');
+      referenced5.calculated('call');
+      referenced5.calculated('call');
+      referenced5.calculated('call');
+      referenced5.calculated('call');
+      referenced5.calculated('call');
+      referenced5.calculated('call');
 
-      
+      assert.equal(referenced5.getTotals().toFixed(2),17.85)
+   });
+
+   it('Check if it prevent further calls or sms(s) if reached critical point', function(){
+      var referenced6 = settings();
+      referenced6.setCrit(20);
+      referenced6.calculated('call');
+      referenced6.calculated('call');
+      referenced6.calculated('call');
+      referenced6.calculated('call');
+      referenced6.calculated('call');
+      referenced6.calculated('call');
+      referenced6.calculated('call');
+      referenced6.calculated('call');
+      referenced6.calculated('call');
+      referenced6.calculated('call');
+      referenced6.calculated('call');
+      referenced6.calculated('sms');
+      referenced6.calculated('sms');
+      referenced6.calculated('sms');
+      referenced6.calculated('sms');
+      referenced6.calculated('sms');
+      referenced6.calculated('sms');
+      assert.equal(referenced6.getTotals(),19.8)
    });
 });
